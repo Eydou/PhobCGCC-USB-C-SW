@@ -20,12 +20,12 @@ GPIO12 (previously a spare line) is now an **LZ** button input. By default it ac
 
 | File | LZ acts as |
 |---|---|
-| `phobgcc_rp2040_LZ-as-z.uf2` | Z |
-| `phobgcc_rp2040_LZ-as-a.uf2` | A |
-| `phobgcc_rp2040_LZ-as-b.uf2` | B |
-| `phobgcc_rp2040_LZ-as-x.uf2` | X |
-| `phobgcc_rp2040_LZ-as-y.uf2` | Y |
-| `phobgcc_rp2040_no-LZ.uf2` | nothing (LZ disabled) |
+| `phobcgcc_rp2040_LZ-as-z.uf2` | Z |
+| `phobcgcc_rp2040_LZ-as-a.uf2` | A |
+| `phobcgcc_rp2040_LZ-as-b.uf2` | B |
+| `phobcgcc_rp2040_LZ-as-x.uf2` | X |
+| `phobcgcc_rp2040_LZ-as-y.uf2` | Y |
+| `phobcgcc_rp2040_no-LZ.uf2` | nothing (LZ disabled) |
 
 To flash, hold Start while plugging in to enter BOOTSEL, then drag the desired `.uf2` onto the `RPI-RP2` drive.
 
