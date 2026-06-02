@@ -2,7 +2,7 @@
 
 PhobGCC is an open-source Gamecube controller motherboard aiming to make an accessible and consistent controller. The key feature is the use of hall effect sensors instead of potentiometers, which eliminates a wear item. Additonally, it features notch calibration, digital snapback filtering, button remapping, and various trigger configurations.
 
-This fork replaces the GameCube **joybus** output with a **USB-C** transport: the controller enumerates as the official Nintendo GameCube controller adapter (WUP-028 emulation) on port 1, so it can be plugged directly into a Switch over USB-C. Input is emitted on a fixed 8.333 ms **consistency-mode** cadence (NaxGCC model), independent of the host's polling.
+This fork replaces the GameCube **joybus** output with a **USB-C** transport: the controller enumerates as the official Nintendo GameCube controller adapter (WUP-028 emulation) on port 1, so it can be plugged directly into a Switch over USB-C. Input is emitted on a fixed 8.333 ms **consistency-mode** cadence ([`NaxGCC model`](https://git.naxdy.org/NaxdyOrg/NaxGCC-FW), independent of the host's polling.
 
 ## USB-C / consistency mode
 
