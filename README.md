@@ -16,7 +16,11 @@ To physically convert your Phob to a USB-C port, you need the **OlyU** by sean44
 
 ## LZ button (second Z)
 
-GPIO12 (previously a spare line) is now an **LZ** button input. By default it acts as a second **Z**. Prebuilt firmware images for each mapping are provided in [`uf2_builds/`](https://github.com/Eydou/PhobGCC-USB-C-SW/releases/tag/1.0.0):
+GPIO12 (previously a spare line) is now an **LZ** button input. By default it acts as a second **Z**.
+
+To physically add a ZL button to your Phob, you need **PhoZL** by sean44104: https://github.com/sean44104/PhoZL
+
+Prebuilt firmware images for each mapping are provided in [`uf2_builds/`](https://github.com/Eydou/PhobGCC-USB-C-SW/releases/tag/1.0.0):
 
 | File | LZ acts as |
 |---|---|
