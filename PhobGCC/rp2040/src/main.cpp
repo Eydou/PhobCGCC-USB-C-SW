@@ -5,7 +5,7 @@
 #include "hardware/pwm.h"
 
 #include "phobGCC.h"
-#include "comms/joybus.hpp"
+#include "comms/usbAdapter.hpp"
 #include "cvideo.h"
 #include "cvideo_variables.h"
 #include "hardware/clocks.h"
@@ -32,7 +32,7 @@ GCReport __no_inline_not_in_flash_func(buttonsToGCReport)() {
 		.dRight  = _btn.Dr,
 		.dDown   = _btn.Dd,
 		.dUp     = _btn.Du,
-		.z       = _btn.Z,
+		.z       = _btn.Z || _hardware.LZ,//LZ acts as a second Z
 		.r       = _btn.R,
 		.l       = _btn.L,
 		.pad1    = 1,
@@ -823,6 +823,7 @@ int main() {
 	_btn.Ra     =0;
 	_btn.magic1 =0;
 	_btn.magic2 =0;
+	_btn.LZ     =0;
 
 	_raw.axRaw = 0;
 	_raw.ayRaw = 0;
@@ -881,8 +882,8 @@ int main() {
 #endif //BUILD_DEV
 		videoOut(_pinDac0, _btn, _hardware, _raw, _controls, _aStickParams, _cStickParams, _dataCapture, _sync, _pleaseCommit, _currentCalStep, _currentRemapStep, version);
 	} else {
-		enterMode(_pinTX,
-				_pinRumble,
+		//USB-C GameCube-adapter mode (WUP-028 emulation, consistency mode) instead of joybus
+		enterUsbMode(_pinRumble,
 				_pinBrake,
 				_rumblePower,
 				buttonsToGCReport);

@@ -53,6 +53,11 @@ void setPinModes() {
 	gpio_pull_up(_pinS);
 	gpio_set_dir(_pinS, GPIO_IN);
 
+	//LZ button (acts as a second Z)
+	gpio_init(_pinLZ);
+	gpio_pull_up(_pinLZ);
+	gpio_set_dir(_pinLZ, GPIO_IN);
+
 	/* the comms library sets this
 	gpio_init(_pinTx);
 	gpio_set_dir(_pinTx, GPIO_IN);
@@ -104,8 +109,7 @@ void setPinModes() {
 	gpio_set_dir(_pinDac3, GPIO_OUT);
 
 	//initialize spare outputs
-	gpio_init(_pinSpare0);
-	gpio_set_dir(_pinSpare0, GPIO_OUT);
+	//GPIO12 (_pinSpare0) is now the LZ input, initialized above, so we no longer drive it
 	gpio_init(_pinSpare1);
 	gpio_set_dir(_pinSpare1, GPIO_OUT);
 	gpio_init(_pinSpare2);
@@ -123,6 +127,7 @@ void readButtons(const Pins &, Buttons &hardware) {
 	hardware.R  = !gpio_get(_pinR);
 	hardware.Z  = !gpio_get(_pinZ);
 	hardware.S  = !gpio_get(_pinS);
+	hardware.LZ = !gpio_get(_pinLZ);
 	hardware.Dr = !gpio_get(_pinDr);
 	hardware.Du = !gpio_get(_pinDu);
 	hardware.Dl = !gpio_get(_pinDl);

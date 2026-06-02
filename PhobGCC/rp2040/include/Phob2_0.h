@@ -44,7 +44,9 @@ const int _pinRadc = 0; //ADC number
 const int _pinLa = 27; //GPIO number
 const int _pinLadc = 1; //ADC number
 //and four more spare connections
-const int _pinSpare0 = 12;
+//GPIO12 is repurposed as the LZ button input (acts as a second Z)
+const int _pinLZ     = 12;
+//const int _pinSpare0 = 12;
 const int _pinSpare1 = 13;
 const int _pinSpare2 = 14;
 const int _pinLED    = 15;

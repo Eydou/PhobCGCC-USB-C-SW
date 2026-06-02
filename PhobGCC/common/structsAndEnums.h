@@ -99,7 +99,7 @@ struct Pins{
 };
 
 union Buttons{
-	uint8_t arr[10];
+	uint8_t arr[11];
 	struct {
 
 		// byte 0
@@ -136,6 +136,10 @@ union Buttons{
 		// to make a cmd response work
 		uint8_t magic1 : 8;
 		uint8_t magic2 : 8;
+
+		// byte 10 - LZ button (acts as a second Z)
+		uint8_t LZ      : 1;
+		uint8_t unused0 : 7;
 	};
 };
 

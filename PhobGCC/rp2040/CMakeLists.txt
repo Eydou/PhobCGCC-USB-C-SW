@@ -20,20 +20,14 @@ add_executable(phobgcc_rp2040
 	src/drawImage.cpp
 	src/drawMenu.cpp
 	src/graph.cpp
-	src/joybus.cpp
+	src/usb_gc_adapter.cpp
 	src/main.cpp
 	src/navigateMenu.cpp
 	src/storage.cpp
 	src/games/ping.cpp
 	)
 
-pico_generate_pio_header(phobgcc_rp2040 ${CMAKE_CURRENT_LIST_DIR}/pio/joybus.pio)
 pico_generate_pio_header(phobgcc_rp2040 ${CMAKE_CURRENT_LIST_DIR}/pio/cvideo.pio)
-
-add_custom_command(OUTPUT ${CMAKE_CURRENT_LIST_DIR}/generated/joybus.pio.h
-	DEPENDS ${CMAKE_CURRENT_LIST_DIR}/joybus.pio
-	COMMAND Pioasm ${CMAKE_CURRENT_LIST_DIR}/joybus.pio ${CMAKE_CURRENT_LIST_DIR}/generated/joybus.pio.h
-	)
 
 add_custom_command(OUTPUT ${CMAKE_CURRENT_LIST_DIR}/generated/cvideo.pio.h
 	DEPENDS ${CMAKE_CURRENT_LIST_DIR}/cvideo.pio
@@ -60,7 +54,12 @@ target_link_libraries(phobgcc_rp2040
 	hardware_pwm
 	hardware_spi
 	hardware_sync
-	hardware_timer)
+	hardware_timer
+	tinyusb_device
+	tinyusb_board
+	pico_unique_id)
 
 pico_add_extra_outputs(phobgcc_rp2040)
-pico_enable_stdio_usb(phobgcc_rp2040 1)
+# Custom TinyUSB GameCube-adapter device owns the USB port; stdio over USB CDC
+# would conflict with our descriptors, so disable it.
+pico_enable_stdio_usb(phobgcc_rp2040 0)
